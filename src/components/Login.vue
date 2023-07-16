@@ -3,12 +3,12 @@
     <div class="login_box">
       <!--logo区域-->
       <div class="logo_box">
-        <img src="../../assets/logo.png" alt="">
+        <img src="../assets/logo.png" alt="">
       </div>
       <!--      登录区域-->
       <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules" class="login_form">
         <el-form-item prop="username">
-          <el-input v-model="loginForm.username" prefix-icon="iconfont icon-user" placeholder="用户名">
+          <el-input v-model="loginForm.username" prefix-icon="iconfont icon-user1" placeholder="用户名">
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
@@ -66,8 +66,8 @@
         // 登录合法性预校验
         this.$refs.loginFormRef.validate(async valid => {
           if (!valid) return false
-          const { data: res } = await this.$http.post('http://localhost:8080/login') // 登录成功
-          // const { data: res } = await this.$http.post('http://localhost:8080/field') // 登录失败
+          const { data: res } = await this.$http.post('login') // 登录成功
+          // const { data: res } = await this.$http.post('/field') // 登录失败
           if (res.meta.status !== 200) {
             return this.$notify.error({
               title: res.meta.msg
